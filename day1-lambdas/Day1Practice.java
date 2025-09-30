@@ -43,7 +43,6 @@ public class Day1Practice {
 
         // ---------- Custom Exercise ----------
         customExercise();
-
     }
 
     private static void customExercise() {
@@ -76,6 +75,25 @@ public class Day1Practice {
                     return student;
                 }).toList();
         students.forEach(s -> System.out.println(s.name + " " + s.age));
+
+        List<String> stringList = new ArrayList<>(List.of( "orange", "papayas","apple1", "mango"));
+        stringList.forEach(System.out::println);
+        System.out.println("==============");
+        stringList.sort(Comparator.comparing(String::length));
+        stringList.forEach(System.out::println);
+        System.out.println("==============");
+        stringList.sort(Comparator.comparingInt(String::length).reversed());
+        stringList.forEach(System.out::println);
+        System.out.println("==============");
+
+
+        List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+        numbers.stream()
+                .filter(number -> number % 2 == 0)
+                .forEach(System.out::println);
+        //stringList.sort(String::compareTo);
+        //stringList.forEach(System.out::println);
+
     }
 
     // -------------------------------
