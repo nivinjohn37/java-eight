@@ -1,5 +1,6 @@
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -62,6 +63,40 @@ public class CustomTest {
                 .forEach(System.out::println);
         System.out.println("==================================");
 
+        Map<String, Integer> unsortedMap = new HashMap<>();
+        unsortedMap.put("Apple", 3);
+        unsortedMap.put("Banana", 1);
+        unsortedMap.put("Kiwi", 4);
+        unsortedMap.put("Cherry", 2);
+
+        // Sort the HashMap by values in ascending order
+        Map<String, Integer> sortedMapAsc = unsortedMap.entrySet()
+                .stream()
+                .sorted(Map.Entry.comparingByValue())
+                .collect(Collectors.toMap(
+                        Map.Entry::getKey,
+                        Map.Entry::getValue,
+                        (e1, e2) -> e1, // Merge function for duplicate keys (not applicable here as keys are unique)
+                        LinkedHashMap::new // Use LinkedHashMap to preserve order
+                ));
+
+        System.out.println("Sorted by value (ascending): " + sortedMapAsc);
+
+        // Sort the HashMap by values in descending order
+        Map<String, Integer> sortedMapDesc = unsortedMap.entrySet()
+                .stream()
+                .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
+                .collect(Collectors.toMap(
+                        Map.Entry::getKey,
+                        Map.Entry::getValue,
+                        (e1, e2) -> e1,
+                        LinkedHashMap::new
+                ));
+
+        System.out.println("Sorted by value (descending): " + sortedMapDesc);
+        System.out.println("==================================");
+
+
         //How do you remove duplicate elements from a list using Java 8 streams?
         //List<Integer> listOfIntegers = Arrays.asList(71, 18, 42, 21, 67, 32, 95, 14, 56, 87, 22, 12);
         List<String> listOfStrings = Arrays.asList("Java", "Python", "C#", "Java", "Kotlin", "Python");
@@ -106,6 +141,25 @@ public class CustomTest {
                 .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()))
                 .forEach((key, value) -> System.out.println(key + " " + value));
         System.out.println("==================================");
+
+        //How do you sort the given list of decimals in reverse order?
+        List<Double> decimalList = Arrays.asList(12.45, 23.58, 17.13, 42.89, 33.78, 71.85, 56.98, 21.12);
+        decimalList.stream()
+                //.sorted((s1, s2) -> Double.compare(s2, s1))
+                .sorted(Comparator.reverseOrder())
+                .toList()
+                .forEach(System.out::println);
+
+        //Given a list of strings, join the strings with ‘[‘ as prefix, ‘]’ as suffix and ‘,’ as delimiter?
+        List<String> listOfStrings2 = Arrays.asList("Facebook", "Twitter", "YouTube", "WhatsApp", "LinkedIn");
+        listOfStrings2.stream()
+                .map(s -> "[" + s + "],")
+                .toList()
+                .forEach(System.out::print);
+        System.out.println();
+        String joinedString = listOfStrings2.stream().collect(Collectors.joining(", ", "[", "]"));
+
+        System.out.println(joinedString);
 
 
     }
