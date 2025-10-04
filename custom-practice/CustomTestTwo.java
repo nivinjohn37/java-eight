@@ -32,7 +32,7 @@ public class CustomTestTwo {
         IntStream.of(2,2,2,3,3)
                 .boxed()
                 .collect(Collectors.partitioningBy(x -> x % 2 == 0))
-                .;
+        ;
     }
 
 }

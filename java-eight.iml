@@ -7,6 +7,7 @@
       <sourceFolder url="file://$MODULE_DIR$/day1-lambdas" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/day2-streams" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/day3-collectors" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/day4-optional" isTestSource="false" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
